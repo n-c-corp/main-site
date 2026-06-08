@@ -117,6 +117,57 @@
       </div>
     </section>
 
+    <!-- ── Required Forms ── -->
+    <section class="section" aria-labelledby="docs-heading">
+      <div class="container">
+        <div class="section-head fade-in">
+          <span class="section-label">Before You Start</span>
+          <h2 id="docs-heading">Required Employment Forms</h2>
+          <p>Download and complete the required federal tax form before your first day. Bring a signed copy with you or email it to us with your application.</p>
+        </div>
+        <div class="docs-grid fade-in">
+
+          <div class="doc-card">
+            <div class="doc-icon" aria-hidden="true">
+              <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="doc-body">
+              <h3>W-4 — Employee's Withholding Certificate</h3>
+              <p>Required by the IRS for all new employees. Tells us how much federal income tax to withhold from your paycheck. Complete and return this before or on your first day.</p>
+              <div class="doc-actions">
+                <a href="https://www.irs.gov/pub/irs-pdf/fw4.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" download>
+                  <i class="fas fa-download" aria-hidden="true"></i> Download W-4 (PDF)
+                </a>
+                <a href="https://www.irs.gov/forms-pubs/about-form-w-4" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark">
+                  <i class="fas fa-info-circle" aria-hidden="true"></i> W-4 Instructions
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="doc-card">
+            <div class="doc-icon" aria-hidden="true">
+              <i class="fas fa-id-card"></i>
+            </div>
+            <div class="doc-body">
+              <h3>I-9 — Employment Eligibility Verification</h3>
+              <p>Required by federal law to verify your identity and authorization to work in the United States. You will complete this with your supervisor on your first day. Bring valid ID documents.</p>
+              <div class="doc-actions">
+                <a href="https://www.uscis.gov/sites/default/files/document/forms/i-9.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary" download>
+                  <i class="fas fa-download" aria-hidden="true"></i> Download I-9 (PDF)
+                </a>
+                <a href="https://www.uscis.gov/i-9" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark">
+                  <i class="fas fa-info-circle" aria-hidden="true"></i> I-9 Instructions
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <p class="docs-note fade-in"><i class="fas fa-envelope" aria-hidden="true"></i> Completed forms can be emailed to <a href="mailto:ncosamacorp@gmail.com">ncosamacorp@gmail.com</a> or brought in person to our Brooklyn office.</p>
+      </div>
+    </section>
+
     <!-- ── Application Form ── -->
     <section class="section section-alt" aria-labelledby="apply-heading">
       <div class="container">
@@ -134,8 +185,10 @@
               novalidate
               aria-label="Employment application form"
             >
-              <input type="hidden" name="access_key" value="957afbbb-f98a-4d61-ab0c-5b4eee96fc53">
+              <input type="hidden" name="access_key" value="5451cba8-6b47-4f14-baa9-78405098a522">
               <input type="hidden" name="subject" value="New Employment Application — N&C Reset Remodeling Corp">
+              <input type="hidden" name="from_name" value="NC Reset Remodeling — Careers Form">
+              <input type="hidden" name="replyto" value="ncosamacorp@gmail.com">
               <input type="checkbox" name="botcheck" style="display:none;" tabindex="-1" aria-hidden="true">
 
               <div class="form-row">
@@ -323,7 +376,7 @@
           </div>
           <div class="footer-contact-item">
             <i class="fas fa-envelope" aria-hidden="true"></i>
-            <a href="mailto:info@ncresetremodeling.com">info@ncresetremodeling.com</a>
+            <a href="mailto:ncosamacorp@gmail.com">ncosamacorp@gmail.com</a>
           </div>
           <div class="footer-contact-item">
             <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
@@ -341,6 +394,8 @@
     </div>
   </footer>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/supabase-config.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

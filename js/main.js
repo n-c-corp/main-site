@@ -5,6 +5,32 @@
 (function () {
   'use strict';
 
+  /* ── 0. Supabase Client ──────────────────────────────────── */
+  var supabase = null;
+  if (
+    window.supabase &&
+    window.SUPABASE_URL &&
+    window.SUPABASE_ANON_KEY &&
+    window.SUPABASE_URL !== 'YOUR_SUPABASE_URL'
+  ) {
+    supabase = window.supabase.createClient(
+      window.SUPABASE_URL,
+      window.SUPABASE_ANON_KEY
+    );
+  }
+
+  /* Save a submission to Supabase (silent — does not block email) */
+  function saveToSupabase(table, data) {
+    if (!supabase) return Promise.resolve();
+    return supabase.from(table).insert([data])
+      .then(function(res) {
+        if (res.error) console.warn('Supabase insert error:', res.error.message);
+      })
+      .catch(function(err) {
+        console.warn('Supabase error:', err);
+      });
+  }
+
   /* ── 1. Year ─────────────────────────────────────────────── */
   document.querySelectorAll('.current-year').forEach(function (el) {
     el.textContent = new Date().getFullYear();
@@ -128,13 +154,50 @@
       submitBtn.disabled = true;
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin" aria-hidden="true"></i> Sending…';
 
-      fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { 'Accept': 'application/json' }
-      })
-      .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); })
-      .then(function (result) {
+      /* Build Supabase payload from form fields */
+      var fd   = new FormData(form);
+      var isCareer  = formId === 'careers-form';
+      var isContact = formId === 'contact-form';
+      var dbPayload = null;
+
+      if (isCareer) {
+        dbPayload = {
+          first_name:   fd.get('first_name')   || '',
+          last_name:    fd.get('last_name')     || '',
+          email:        fd.get('email')         || '',
+          phone:        fd.get('phone')         || '',
+          position:     fd.get('position')      || '',
+          availability: fd.get('availability')  || '',
+          experience:   fd.get('experience')    || '',
+          additional:   fd.get('additional')    || ''
+        };
+      } else if (isContact) {
+        dbPayload = {
+          full_name:  fd.get('name')     || '',
+          company:    fd.get('company')  || '',
+          email:      fd.get('email')    || '',
+          phone:      fd.get('phone')    || '',
+          service:    fd.get('service')  || '',
+          location:   fd.get('location') || '',
+          message:    fd.get('message')  || '',
+          referral:   fd.get('referral') || ''
+        };
+      }
+
+      var dbTable = isCareer ? 'career_applications' : 'contact_submissions';
+
+      /* Fire email (Web3Forms) + Supabase insert in parallel */
+      Promise.all([
+        fetch(form.action, {
+          method: 'POST',
+          body: fd,
+          headers: { 'Accept': 'application/json' }
+        })
+        .then(function (res) { return res.json().then(function (data) { return { ok: res.ok, data: data }; }); }),
+        dbPayload ? saveToSupabase(dbTable, dbPayload) : Promise.resolve()
+      ])
+      .then(function (results) {
+        var result = results[0];
         if (result.ok) {
           form.style.display = 'none';
           if (successEl) {
