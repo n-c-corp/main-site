@@ -518,6 +518,43 @@ textarea:focus-visible {
 .region-chip i { color: var(--accent); font-size: 1rem; }
 .region-chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
+/* ── 11b. Partners ────────────────────────────────────────── */
+.partners-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.partner-chip {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--dark);
+  box-shadow: var(--shadow);
+  transition: var(--t);
+}
+.partner-chip i { color: var(--accent); font-size: 1rem; flex-shrink: 0; }
+.partner-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+@media (min-width: 768px) {
+  .partners-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px) {
+  .partners-grid { grid-template-columns: repeat(4, 1fr); }
+  .partner-chip { flex-direction: column; text-align: center; gap: 10px; padding: 24px 16px; justify-content: center; }
+  .partner-chip i { font-size: 1.4rem; }
+}
+
 /* ── 12. CTA Banner ───────────────────────────────────────── */
 .cta-banner {
   background: var(--accent);
