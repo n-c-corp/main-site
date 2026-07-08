@@ -564,6 +564,14 @@ textarea:focus-visible {
 .pm-blue { background: var(--accent); }
 .pf-body h3 { font-size: 1.05rem; font-weight: 700; color: var(--dark); margin-bottom: 4px; line-height: 1.3; }
 .pf-body p  { font-size: 0.8125rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--gold); margin: 0; }
+.pf-ext {
+  margin-left: auto;
+  font-size: 0.8rem;
+  color: var(--border);
+  transition: var(--t);
+  flex-shrink: 0;
+}
+.partner-featured-card:hover .pf-ext { color: var(--accent); }
 
 /* Retail clients strip */
 .clients-label {
