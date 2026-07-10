@@ -1,15 +1,11 @@
 /* ============================================================
    Supabase Configuration — N&C Reset Remodeling Corp
 
-   DISABLED: the previous project (mrvvxidmlpvfipsunalc.supabase.co)
-   no longer resolves — it was paused or deleted in the Supabase
-   dashboard. Forms still work fully via Web3Forms email.
-
-   To re-enable the database backup:
-   1. Restore the project (or create a new one) at supabase.com
-   2. Run supabase-setup.sql in the SQL Editor
-   3. Replace the two values below with the project URL and anon key
+   NOTE: Free-tier Supabase projects auto-pause after ~7 days
+   of inactivity. If forms stop saving to the database (email
+   still works), restore the project at supabase.com — same
+   URL and key keep working after restore.
    ============================================================ */
 
-window.SUPABASE_URL      = 'YOUR_SUPABASE_URL';
-window.SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+window.SUPABASE_URL      = 'https://mrvvxidmlpvfipsunalc.supabase.co';
+window.SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1ydnZ4aWRtbHB2Zmlwc3VuYWxjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5MDk4ODQsImV4cCI6MjA5NjQ4NTg4NH0.Uzw2EdpXdCGY_OPNtDLvQvmXC2nMaH4KotT8u_88yF8';
