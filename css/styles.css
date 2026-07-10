@@ -1062,6 +1062,19 @@ textarea:focus-visible {
 .footer-legal a { font-size: 0.85rem; color: rgba(255,255,255,0.42); transition: var(--t); }
 .footer-legal a:hover { color: var(--accent); }
 
+.footer-credit {
+  width: 100%;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.28);
+  margin: 4px 0 0 !important;
+}
+.footer-credit a {
+  color: rgba(255,255,255,0.45);
+  font-weight: 600;
+  transition: var(--t);
+}
+.footer-credit a:hover { color: var(--accent); }
+
 /* ── 20. Number Counter Pop ──────────────────────────────── */
 @keyframes countPop {
   0%   { transform: scale(1); }
