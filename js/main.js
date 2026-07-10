@@ -205,7 +205,7 @@
             successEl.focus();
           }
         } else {
-          var errText = (result.data.errors || []).map(function (e) { return e.message; }).join(', ') || 'Something went wrong. Please try again.';
+          var errText = (result.data.errors || []).map(function (e) { return e.message; }).join(', ') || result.data.message || 'Something went wrong. Please try again.';
           alert('Error: ' + errText);
           submitBtn.disabled = false;
           submitBtn.innerHTML = origHTML;
@@ -285,16 +285,5 @@
       });
     }
   }());
-
-  /* ── 8. File Input Label ─────────────────────────────────── */
-  var fileInput = document.getElementById('resume-file');
-  var fileLabelText = document.getElementById('file-label-text');
-  if (fileInput && fileLabelText) {
-    fileInput.addEventListener('change', function () {
-      fileLabelText.textContent = fileInput.files && fileInput.files[0]
-        ? fileInput.files[0].name
-        : 'Click to upload resume (PDF or Word — optional)';
-    });
-  }
 
 })();
